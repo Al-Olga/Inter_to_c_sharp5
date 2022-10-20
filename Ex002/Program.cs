@@ -51,34 +51,32 @@ int SumNumb (int number)
 bool Polindrom (int number)
 {
     bool fl = false;
-    int temp=number; // переменная для временного хранения и изменения (деления) введенного числа
+    int temp=number; // переменная для изменения временного хранилища, не трогая введенное число
     int razryad=0;
+    int delitel=1;
     while (temp>0)
     {
         temp=temp/10;
         razryad++; // определяем разрядность числа
+        delitel=delitel*10;
     }
 
     if (razryad<2) fl = false;
     else
-    {
-        int seredina=razryad/2;; // переменная для определеия середины среди цифр введенного числа
-      
+    {      
         int last;
-        int mnogitel=1;
-        int first=number;
-        for (int i=1; i<=seredina; i++)
+        int first;
+        temp=number; // для изменения временного хранилища, не трогая введенное число
+        for (int i=1; i<=(razryad/2); i++)
         {
-            last=first%10;
-            while (first>10) 
-            {
-                first=first/10;
-                mnogitel=mnogitel*10;
-            }
+            delitel=delitel/10;
+            last=temp%10;
+            first=(temp/delitel)%10;
             if (first==last)
             {
                 fl = true;
-                first=(number-(first*mnogitel))/10;
+                temp=temp/10;
+                delitel=delitel/10;
             }
             else
             {

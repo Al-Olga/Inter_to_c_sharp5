@@ -91,9 +91,7 @@ bool FindElement(int[] array, int element)
 void PrintArray(int[] array)
 {
     for (int i = 0; i < array.Length; i++)
-        {
-            Console.Write($"{array[i]}"+"; ");
-        }
+        Console.Write($"{array[i]}"+"; ");
     Console.WriteLine();
 }
 
@@ -167,7 +165,7 @@ bool FindSort(int[] array)
     bool fl_sort=false;
     for (int i=0; i < (array.Length-1); i++) 
     {
-        if (array[i]<array[i+1]) 
+        if (array[i]<=array[i+1]) 
             fl_sort = true;
         else 
         {
@@ -181,16 +179,11 @@ bool FindSort(int[] array)
 // Для проверки задания 14, сортируем наш массив
 void ArraySort(int[] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    for (int i=0; i<(array.Length-1); i++)
     {
         int MinIndex = i;
-        for (int j = i+1; j < array.Length; j++)
-        {
-            if(array[j] < array[MinIndex]) MinIndex = j;
-            {
-                MinIndex = j;
-            }
-        }
+        for (int j =i+1; j<array.Length; j++)
+            if(array[j]<array[MinIndex]) MinIndex = j;
         int temp = array[i];
         array[i] = array[MinIndex];
         array[MinIndex] = temp;
@@ -251,10 +244,12 @@ else
     Console.WriteLine($"Задание 10. Искомых элементов ({elem}) в массиве = {CountFindElement(array, elem)}");
 }
 
+// Задание 14. Проверка массива на сортировку по возрастанию
 if (FindSort(array)==false) 
     Console.WriteLine("Задание 14. Массив не отсортирован по возрастанию");
 else 
     Console.WriteLine("Задание 14. Массив отсортирован по возрастанию");
+
 // Проверка задания 14 на принудительно отсортированном массиве
 ArraySort(array);
 Console.WriteLine("Проверка задания 14. Отсортированный массив:");
